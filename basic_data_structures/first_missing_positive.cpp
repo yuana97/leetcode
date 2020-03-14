@@ -1,6 +1,12 @@
 class Solution
 {
 
+/*
+Question: Given an integer array return the first missing positive number.
+Solution: Swap every positive number to its correct place. Then return the first one missing.
+Complexity: O(n) + O(n) = O(n)
+*/
+
 #include <algorithm>
 
 public:
