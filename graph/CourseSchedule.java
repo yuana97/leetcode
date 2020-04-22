@@ -53,7 +53,7 @@ public class CourseSchedule {
     // count = number of courses we can take
     int count = 0;
     // put indegree 0 vertices to a queue
-    Queue<Integer> queue = new LinkedList();
+    Queue<Integer> queue = new LinkedList<Integer>();
     for (int i = 0; i < indegree.length; i++) {
       if (indegree[i] == 0) queue.offer(i);
     }
