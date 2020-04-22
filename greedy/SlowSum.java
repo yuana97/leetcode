@@ -18,14 +18,15 @@ of the previous biggest pair. O(N).
 */
 
 public class SlowSum {
-  int getTotalTime(int[] arr) {
+  public static int getTotalTime(int[] arr) {
     // trivial case
-    if (arr == null || arr.length == 0) return 0;
+    if (arr == null || arr.length == 0)
+      return 0;
     // find the pair (l, r) with the highest sum
     int l = -1, r = -1;
     for (int i = 1; i < arr.length; i++) {
-      if (l == -1 || arr[i-1]+arr[i] > arr[l] + arr[r]) {
-        l = i-1;
+      if (l == -1 || arr[i - 1] + arr[i] > arr[l] + arr[r]) {
+        l = i - 1;
         r = i;
       }
     }
@@ -36,7 +37,8 @@ public class SlowSum {
     r++;
     // while we still have numbers to merge in
     while (l >= 0 || r < arr.length) {
-      // don't consider l/r if they are out of bounds, otherwise l = left number and r = right number
+      // don't consider l/r if they are out of bounds, otherwise l = left number and r
+      // = right number
       int left = l < 0 ? Integer.MIN_VALUE : arr[l];
       int right = r >= arr.length ? Integer.MIN_VALUE : arr[r];
       // merge the bigger number
@@ -44,13 +46,20 @@ public class SlowSum {
         currCost += left;
         totalCost += currCost;
         l--;
-      }
-      else {
+      } else {
         currCost += right;
         totalCost += currCost;
         r++;
       }
     }
     return totalCost;
+  }
+
+  public static void main(String[] args) {
+    // should output 23, 88, 907
+    int[] nums1 = { 4, 2, 1, 3 }, nums2 = { 2, 3, 9, 8, 4 }, nums3 = { 2, 100, 100, 1, 99 };
+    System.out.println(getTotalTime(nums1));
+    System.out.println(getTotalTime(nums2));
+    System.out.println(getTotalTime(nums3));
   }
 }
