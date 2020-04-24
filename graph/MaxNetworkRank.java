@@ -21,8 +21,6 @@ adjacency matrix, then find the max value of indegree(A) + indegree(B) - #roads-
 
 import java.util.*;
 
-import javax.sound.sampled.SourceDataLine;
-
 public class MaxNetworkRank {
   public int maxNetworkRank(int[] A, int[] B, int N) {
     int M = A.length;
@@ -37,10 +35,31 @@ public class MaxNetworkRank {
       indegree[B[i]]++;
       adj[A[i]][B[i]]++;
       adj[B[i]][A[i]]++;
-      int networkRank = indegree[A[i]] + indegree[B[i]] - adj[A[i]][B[i]] + 1;
+      System.out.println(arrToString(indegree));
+      System.out.println(arr2ToString(adj));
+    }
+    for(int i = 0; i < M; i++) {
+      int networkRank = indegree[A[i]] + indegree[B[i]] - adj[A[i]][B[i]];
       max = networkRank > max ? networkRank : max;
     }
     return max;
+  }
+
+  private String arrToString(int[] arr) {
+    if (arr == null || arr.length == 0) return "";
+    String str = "" + arr[0]; 
+    for (int i = 1; i < arr.length; i++) {
+      str += " " + arr[i];
+    }
+    return str;
+  }
+
+  private String arr2ToString(int[][] arr2) {
+    String str = "\n";
+    for (int[] arr : arr2) {
+      str += arrToString(arr) + "\n";
+    }
+    return str;
   }
 
   public static void main(String[] args) {
