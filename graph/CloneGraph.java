@@ -6,6 +6,7 @@ Given a node of a connected graph, return a clone of the graph.
 
 Solution:
 Just use your favorite graph traversal method with a map to prevent overcounting.
+This solution uses a BFS.
 
 */
 
