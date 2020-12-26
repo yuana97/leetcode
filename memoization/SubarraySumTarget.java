@@ -1,4 +1,4 @@
-package basic_data_structures;
+package memoization;
 
 /*
 SubarraySumTarget (2020 Facebook Telephone Screen)
@@ -18,7 +18,10 @@ check if current partial sum - k exists in the map.
 import java.util.*;
 
 public class SubarraySumTarget {
-  public int subarraySum(int[] nums, int k) {
+  public int subarraySum(int[] nums, int k) throws IllegalArgumentException {
+    if (nums == null) {
+      throw new IllegalArgumentException("Array must not be null");
+    }
     int sum = 0, result = 0;
     // map partial sum -> frequency
     Map<Integer, Integer> preSum = new HashMap<>();

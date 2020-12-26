@@ -1,10 +1,10 @@
-package basic_data_structures;
+package memoization;
 
 import java.util.*;
 
 /*
 
-Question:
+Question (Microsoft):
 Given an int[] nums and an int k check if nums has a subarray of length >= 2 which sums to a multiple
 of k.
 

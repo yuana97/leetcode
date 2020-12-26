@@ -5,12 +5,8 @@ import java.util.*;
 /*
 
 Question:
-Let's say you have a load balancer routing a list of requests to three hosts. We
-call a list of requests 'balanceable' if, by removing 2 requests in the list,
-we can partition the list of requests into three sub-lists with the same size,
-summing over all the requests.
-
-Given a list of request sizes, write a function to determine if it is 'balanceable' or not.
+Given an integer array, write a function which return true if we can remove two elements
+of the array to form three subarrays with equal sum, and false otherwise.
 
 Script:
 
