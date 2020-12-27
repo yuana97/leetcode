@@ -6,12 +6,24 @@ SubarraySumTarget (2020 Facebook Telephone Screen)
 Question:
 Given an int[] A and an int k, find the number of subarrays of A which sum up to k.
 
-Solution:
-Partial sums. Let Si = partial sum of A at index i. The idea is the sum of a subarray
-[Ai,...,Aj] equals Sj - Si-1.
+Script:
+Q: To clarify, the input array is an array of integers, is that correct?
+Q: Are we guaranteed that this array is not null?
+S: If it is null, let's handle the error by throwing an exception.
 
-So to solve this question we just map partial sum -> frequency it occurs and at each step
-check if current partial sum - k exists in the map.
+S: Now, let me give a quick overview of the problem.
+S: Let's note that the sum of a subarray is the difference of two partial sums of the array.
+S: That is, to get the sum of a given subarray, we subtract the cumulative sum up to the end
+of the array from the cumulative sum up to the beginning of the array.
+S: (because Ai + Ai+1 + ... + Aj = (A1 + ... + Aj) - (A1 + ... + Ai-1))
+S: Now we can formulate the problem as finding the number of pairs where
+Sj - Si = k, and j > i.
+S: To efficiently solve the problem, we can memoize the mapping of partial sum to
+frequency as we go through the array. At each point j of the array, we can check for
+how many (Sj - k)'s there are in the array. These form a match with j, so we can
+add the frequency of that number to our total count.
+S: This should give an O(N) solution to the problem.
+S: If you agree with my analysis, I can start coding it up.
 
 */
 
