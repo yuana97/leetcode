@@ -1,27 +1,29 @@
 package basic_data_structures;
 
 public class NumberOfPairsSumGreaterThanTarget {
-  // Question: Given a sorted array of numbers, return the number of pairs of elements in that list
-  // with sum greater than or equal to a target number.
+  /*
+  Question: Given a sorted array of numbers, return the number of pairs of elements in that list
+  with sum greater than or equal to a target number.
 
-  // Script:
-  // To clarify, the input array is an array of integers, is that correct?
-  // Are we guaranteed that this array is not null?
-  // If it is null, let's handle the error by throwing an exception.
-  // Since if we return, for example, 0, this error code can't be distinguished
-  // from having a legitimate array and just finding no matches.
+  Script:
+  - To clarify, the input array is an array of integers, is that correct?
+  - Are we guaranteed that this array is not null?
+  - If it is null, let's handle the error by throwing an exception.
 
-  // Now, let me give a quick overview of the problem, and propose a solution.
-  // Because the array is sorted, let's start with two pointers at the first and last elements of the array.
-  // Let's observe that as increase the left pointer, the sum always increases.
-  // Vice versa, as we decrease the right pointer, the sum always decreases.
-  // We can use this structure to efficiently count the number of pairs.
-  // What I mean by this is that, if the sum is too small, we'll increase the left pointer.
-  // If the sum is large enough, we can add the whole block between the left and right pointers,
-  // because we can match the right number with all the numbers between the left and right numbers.
-  // And then we decrease the right pointer to look for more matches.
-  // This should give us an O(N) solution to the problem.
-  // If you agree with this assessment, I can start coding it up.
+  - Now, I'll give a quick overview of the problem.
+  - Let's start with two pointers at the first and last elements of the array.
+  - Because the array is sorted, as we move the left pointer to the right, 
+  the sum always increases.
+  - In the same way, as we move the right pointer to the left, the sum always decreases.
+  - Therefore, if the sum is too small, we'll move the left pointer to the right.
+  - If, the sum is large enough, we can count all the numbers between the left and right pointers
+  - (Because the array is sorted, all the numbers between the left and right, form a match
+  with the right number, since they're bigger than the left number)
+  - And then we decrease the right pointer to look for more matches.
+  - Once, the two pointers meet, we're done searching the array.
+  - And this should give an O(N) solution to the problem.
+  - If you agree with this analysis, I can start coding it up.
+  */
 
   public int countPairs(int[] arr, int target) throws IllegalArgumentException {
     // first lets do a null check, and throw an error code

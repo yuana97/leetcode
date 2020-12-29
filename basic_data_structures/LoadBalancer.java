@@ -5,7 +5,7 @@ import java.util.*;
 /*
 
 Question:
-Given an integer array, write a function which return true if we can remove two elements
+Given an integer array of positive numbers, write a function which return true if we can remove two elements
 of the array to form three subarrays with equal sum, and false otherwise.
 
 Script:
