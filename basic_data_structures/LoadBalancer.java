@@ -18,9 +18,9 @@ so are we guaranteed that the array is only positive numbers?
 S: In that case, let's also throw an exception.
 
 S: Let me give a quick overview of the problem.
-S: Let's first notice that when we cut the array into 3 pieces, we essentially have
-a 'prefix sum' of the first subarray, a 'middle sum' of the middle subarray, and
-a 'suffix sum' of the last subarray.
+S: Let's start with two pointers at the ends of the array representing the cut points.
+S: Let's also maintain a 'prefix sum' adding up all the elements from the beginning
+to the left pointer, and a 'suffix sum' adding up all the elements from the end to the right pointer.
 S: Let's also notice that if we know the total sum of the array, we can infer
 the middle sum by subtracting the prefix and suffix sums from the total sum.
 S: So let's start by using two pointers at the ends of the array representing the 

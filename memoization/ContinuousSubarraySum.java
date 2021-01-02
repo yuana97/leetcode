@@ -17,6 +17,8 @@ Script:
 Q: To clarify, the input array is an array of integers, is that correct?
 Q: Are we guaranteed that this array is not null?
 S: If it is null, let's handle the error by throwing an exception.
+Q: Are we guaranteed that the int k is not zero?
+S: If it is zero, let's handle the error by throwing an exception.
 
 S: Now, let me give a quick overview of the problem.
 S: Let's note that the problem is equivalent to asking if a subarray exists with
@@ -40,22 +42,31 @@ public class ContinuousSubarraySum {
     if (nums == null) {
       throw new IllegalArgumentException("Array must not be null");
     }
+    if (k == 0) {
+      throw new IllegalArgumentException("Integer k must be nonzero");
+    }
+    // initialize result
+    boolean flag = false;
     // map partial sum mod k to the index where it appears
-    Map<Integer, Integer> map = new HashMap<Integer, Integer>(){{put(0,-1);}};;
-    // partial sum mod k
-    int runningSum = 0;
+    Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+    map.put(0, -1);
+    // cumulative sum mod k
+    int partialSum = 0;
     for (int i = 0; i < nums.length; i++) {
       // get the partial sum at i, mod k
-      runningSum += nums[i];
-      if (k != 0) runningSum %= k;
-      // repeat residue mod k => done
-      Integer prev = map.get(runningSum);
+      partialSum = (partialSum + nums[i]) % k;
+      // if we find a previous occurrence of the partial sum,
+      // check if we're done
+      Integer prev = map.get(partialSum);
       if (prev != null) {
-        if (i - prev > 1) return true;
+        if (i - prev > 1) {
+          flag = true;
+          break;
+        }
+      } else {
+        map.put(partialSum, i);
       }
-      // else memoize the partial sum
-      else map.put(runningSum, i);
     }
-    return false;
+    return flag;
   }
 }
