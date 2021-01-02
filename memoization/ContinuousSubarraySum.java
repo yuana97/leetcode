@@ -21,17 +21,17 @@ Q: Are we guaranteed that the int k is not zero?
 S: If it is zero, let's handle the error by throwing an exception.
 
 S: Now, let me give a quick overview of the problem.
-S: Let's note that the problem is equivalent to asking if a subarray exists with
+S: Let's note, that we can obtain, a subarray sum, by subtracting
+two partial sums of the array.
+S: Let's also note that the problem is equivalent to asking if a subarray exists with
 sum = 0 mod k.
-S: Let's also note that the sum of a subarray is equal to the difference of two partial sums
-of the array.
 S: And finally, let's notice that if two numbers are equal mod k, then their difference
 equals 0 mod k.
-S: This suggests to us that we should memoize partial sums mod k. If we encounter
-a repeated number in our cache, we can return true, because we can subtract the two
-partial sums and get a subarray that works.
-S: Because of the requirement that the array length is at least 2, we'll map the partial sums
-mod k to the index where they appear (so we can check the array length)
+S: Let's start by using a hash table to record partial sums mod k
+and the earliest index they occur at.
+S: As we go through the array, let's calculate partial sums mod k.
+If we find a repeat, we should return true, and if the iteration completes,
+we should return false.
 S: This should give an O(N) solution to the problem.
 S: If you agree with my analysis, I can start coding it up.
 
