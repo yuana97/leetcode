@@ -19,12 +19,11 @@ S: In that case, let's also throw an exception.
 
 S: Let me give a quick overview of the problem.
 S: Let's start with two pointers at the ends of the array representing the cut points.
-S: Let's also maintain a 'prefix sum' adding up all the elements from the beginning
+S: Let's maintain a 'prefix sum' adding up all the elements from the beginning
 to the left pointer, and a 'suffix sum' adding up all the elements from the end to the right pointer.
 S: Let's also notice that if we know the total sum of the array, we can infer
 the middle sum by subtracting the prefix and suffix sums from the total sum.
-S: So let's start by using two pointers at the ends of the array representing the 
-cut points we will try. If the prefix sum is too small, we can move the left cut point
+S: If the prefix sum is too small, we can move the left cut point
 to the right, and make the prefix sum bigger. In the same way, if the suffix sum is too small
 we can move the right cut point to the left, and make the suffix sum bigger. In this way,
 we can quickly 'balance' the sums.
