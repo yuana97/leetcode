@@ -44,6 +44,8 @@ public class LongestSubstring {
       if (!window.contains(s.charAt(right))) {
         window.add(s.charAt(right));
         right++;
+        // update the max after adding a character
+        max = Math.max(max, window.size());
       } else {
         // repeat -> remove a character
         window.remove(s.charAt(left));

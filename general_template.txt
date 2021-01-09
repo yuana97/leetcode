@@ -1,0 +1,8 @@
+public type functionName(parameter) throws Exception {
+  // null check
+  // edge case check
+  // initialize result
+  // initialize data
+  // implement logic
+  // return result
+}
