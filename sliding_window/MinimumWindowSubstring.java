@@ -38,18 +38,25 @@ public class MinimumWindowSubstring {
     if (s.length() == 0 || t.length() == 0 || t.length() > s.length()) {
       return "";
     }
-    // initialize our result: to represent a result, 
-    String result = "";
+    // initialize the min to compare to 
+    int min = 0;
+    // initialize indexes of min left/right
+    int minLeft = 0, minRight = 0;
+    // flag: found a substring which works
+    boolean flag = false;
     // initialize sliding window
     int left = 0, right = 0;
-    // initialize the min to compare to
-    int min = 0;
     // frequency map representing characters of t
     HashMap<Character,Integer> map = new HashMap<Character,Integer>();
+    // number of characters remaining to match (once this hits 0, we've found a working string)
+    int count = t.length();
+    // fill the map
     for (char c : t.toCharArray()) {
-
+      // increment the frequency of each character (memorize this pattern)
+      map.put(c, map.getOrDefault(c, 0) + 1);
     }
+    // fill the map
     // return our result
-    return result;
+    return flag ? s.substring(minLeft, minRight+1) : "";
   }
 }

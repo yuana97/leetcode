@@ -34,24 +34,21 @@ public class LongestSubstring {
     }
     // initialize our result
     int max = 0;
-    // initialize our window
+    // init sliding window
     int left = 0, right = 0;
-    // set of characters in the window. We use a Set to check uniqueness
     Set<Character> window = new HashSet<Character>();
-    // move the sliding window across the string
-    int len = s.length();
-    while (right < len) {
-      // if we have a repeat, remove characters from the left
-      // until we only have unique characters
-      while (window.contains(s.charAt(right))) {
+
+    // at each step, add character if OK, otherwise remove a character
+    while (right < s.length()) {
+      // no repeat -> add a character
+      if (!window.contains(s.charAt(right))) {
+        window.add(s.charAt(right));
+        right++;
+      } else {
+        // repeat -> remove a character
         window.remove(s.charAt(left));
         left++;
       }
-      // expand the window
-      right++;
-      window.add(s.charAt(right));
-      // update the max
-      max = Math.max(max, right - left);
     }
     // return our result
     return max;
