@@ -30,8 +30,10 @@ N,M are the side lengths of the array.
 public class NumberOfIslands {
   public int numIslands(boolean[][] grid) {
     int count = 0;
+    // create 'visited' array to mark the land we've already visited.
     int n = grid.length, m = grid[0].length;
     boolean[][] visited = new boolean[n][m];
+    // iterate thru the array and DFS/increment count when we find unvisited land.
     for (int i =0; i < grid.length; i++) {
       for (int j = 0; j < grid[0].length; j++) {
         if (grid[i][j] && !visited[i][j]) {
@@ -47,6 +49,7 @@ public class NumberOfIslands {
     // if in bounds and land, mark visited and DFS
     if(i>=0 && j>=0 && i<grid.length && j<grid[0].length && grid[i][j]){
       visited[i][j] = true;
+      // DFS the neighbors
       dfs(grid, i+1, j, visited);
       dfs(grid, i-1, j, visited);
       dfs(grid, i, j+1, visited);
