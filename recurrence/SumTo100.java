@@ -15,6 +15,8 @@ package recurrence;
  * - First, let's generalize the problem to any target (instead of just 100),
  * and any string of digits (instead of just 123456789). To solve the problem,
  * we would simply call sumTo("123456789", 100).
+ * - We can 
+ * 
  */
 
 import java.util.*;
