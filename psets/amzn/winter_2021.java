@@ -132,4 +132,100 @@ public class winter_2021 {
 
     return val;
   }
+
+  // Fibonacci: get nth fib number (1-indexed), n > 0
+  // directly implement the recurrence or use recursion
+  // expansion: what if you're given a list of N's to compute fib for (online case)
+  // or given a stream (use the class to calculate )
+  public int fib1(int n) {
+    if (n <= 1) {
+      return n;
+    }
+    int a = 0, b = 1;
+
+    while (n > 1) {
+      int sum = a + b;
+      a = b;
+      b = sum;
+      n--;
+    }
+    return b;
+  }
+
+  public int fib2(int n) {
+    if (n <= 1) {
+      return n;
+    } else {
+      return fib2(n-1) + fib2(n-2);
+    }
+  }
+
+  public class FibCalculator {
+    // cache previous results
+    private List<Integer> fibCache;
+
+    FibCalculator() {
+      fibCache = new ArrayList<Integer>();
+      fibCache.add(0);
+      fibCache.add(1);
+      fibCache.add(1);
+    }
+
+    public int fib(int n) throws IllegalArgumentException {
+      if (n <= 0) {
+        throw new IllegalArgumentException("N must be positive");
+      }
+      if (n >= fibCache.size()) {
+        int curSize = fibCache.size();
+        for (int i = curSize-1; i <= n; i++) {
+          int newNum = fibCache.get(curSize-1) + fibCache.get(curSize-2);
+          fibCache.add(newNum);
+        }
+      }
+      return fibCache.get(n);
+    }
+  }
+
+  // Check if a string is a palindrome
+  // S: Loop two pointers from both ends of the string and return false if you find a mismatch.
+  // Return true if the loop completes
+
+  // Square root
+  // Q: Given a positive integer x return the integer part of the square root of x
+  // S: Binary search (invert a monotonic function, in this case find n such that f(n) = x where f
+  // is square function)
+  public int sqrt(int x) {
+    int left = 1, right = x;
+    while (left <= right) {
+      int mid = left + (right - left) / 2; // get midpoint, avoiding overflow
+      if (mid == x / mid) { // perfect square root => break early
+        return mid;
+      } else if (mid < x/mid) {
+        left = mid+1;
+      } else {
+        right = mid - 1;
+      }
+    }
+    return right;
+  }
+
+  // K closest points to origin
+  // just use a priority queue ordered by vector size
+  // data structure question
+  public int[][] kClosest(int[][] points, int k) {
+    PriorityQueue<int[]> pq = new PriorityQueue<int[]>(
+      (p1, p2) -> p2[0] * p2[0] + p2[1] * p2[1] - p1[0] * p1[0] + p1[1] * 12[1]
+    );
+    for (int[] p : points) {
+      pq.offer(p);
+      if (pq.size() > k) {
+        pq.poll();
+      }
+    }
+    int[][] res = new int[k][2];
+    while (k > 0) {
+      res[k] = pq.poll();
+    }
+    return res;
+  }
 }
