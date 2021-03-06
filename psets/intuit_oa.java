@@ -32,18 +32,20 @@ public class intuit_oa {
     }
 
     private boolean dfs(char[][] grid, String word, List<int[]> result, int i, int j, ArrayList<int[]> path) {
-      int[][] dirs = {{0, 1}, {1, 0}};
       // if in bounds and the letter matches, search
-      if (i > 0 && i < grid.length && j > 0 && j < grid[0].length && grid[i][j] == word.charAt(path.size() - 1)) {
+      if (i > 0 && i < grid.length && j > 0 && j < grid[0].length && grid[i][j] == word.charAt(path.size())) {
         path.add(new int[] {i, j});
         int size = path.size();
         if (size == word.length()) {
+          result.clear();
           for (int k = 0; k < size; i++) {
             result.add(path.get(i));
           }
           return true;
         }
-        return dfs(grid, word, result, i+1, j, path) || dfs(grid, word, result, i, j+1, path);
+        boolean output = dfs(grid, word, result, i+1, j, path) || dfs(grid, word, result, i, j+1, path);
+        path.remove(path.size()-1);
+        return output;
       }
       return false;
     }
