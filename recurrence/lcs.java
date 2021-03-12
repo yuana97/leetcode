@@ -4,7 +4,8 @@ public class lcs {
   // Question:
   // Given two strings, determine the length of the longest common subsequence.
   // Solution:
-  // 
+  // Recurrence on LCS of substrings. Check if the latest letter is a match, if so
+  // add +1 to previous substrings result. If not, infer the result from previous calculation
   public int longestCommonSubsequence(String s1, String s2) {
     // dp[i][j] = LCS between 1st i letters of s1, j letters of s2
     int[][] dp = new int[s1.length()+1][s2.length() + 1];
