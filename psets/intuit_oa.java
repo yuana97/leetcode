@@ -58,30 +58,48 @@ public class intuit_oa {
     // S: form an ordered set of digits for every block. Start by picking the
     // smallest number from each block. Then pick bigger numbers starting from the last
     // block going backwards until we hit the kth number.
+    
+    // S = string, X = block size, K = kth number
     public String validNumber(String S, int X, int K) {
-      // create sets of unique digits in each block
+      // represents the list of blocks in the string
       List<Set<Character>> sets = new ArrayList<>();
       for (int i = 0; i < S.length(); i++) {
-        // start a new block
+        // if we're starting a new block ,add a set to the list
         if (i % X == 0) {
           sets.add(new TreeSet<Character>());
         }
-        // add character to corresponding set
+        // add character to the set
         char c = S.charAt(i);
+        // add it to the last set in the list
+        // last set because we only need to add new elements to the newest set
         sets.get(sets.size()-1).add(c);
       }
+      // by the end of this loop, we now have a list of tree sets containing the unique digits of each block in sorted order.
+      // get this number so we can iterate from the right side of the list
       int blockCount = sets.size();
-      // counter up to k
-      int counter = 1;
-      String result = "";
-      // get kth number
+      // counter up to k so we know when we're done
+      int counter = 0;
+      String output = "";
+      // iterate over the sets
       for (int i = blockCount - 1; i >= 0; i--) {
+        // if we've already picked out the bigger numbers we need to
+        // we can just pick out the smallest number
         if (counter == K) {
-          break;
+          output = sets.get(i).getFirst() + output;
+        } else {
+          // otherwise, go thru the set, increment until we hit k, then add the number to the output. If we hit the end of the set, also add that number to the output.
+        for (int digit : sets.get(i)) {
+          counter++;
+          if (counter == K || digit == sets.get(i).getLast()) {
+            output = digit + output;
+            break;
+          }
         }
-
+        }
       }
+      return output;
     }
+    
 
     // Q: Text Justification
     // Given an array of words and a width maxWidth, return
