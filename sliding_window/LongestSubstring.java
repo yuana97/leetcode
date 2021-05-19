@@ -27,6 +27,7 @@ S: If you agree with my analysis, I can start coding it up.
 */
 
 public class LongestSubstring {
+
   public int lengthOfLongestSubstring(String s) throws IllegalArgumentException {
     // null checking
     if (s == null) {
@@ -55,4 +56,6 @@ public class LongestSubstring {
     // return our result
     return max;
   }
+
+  
 }

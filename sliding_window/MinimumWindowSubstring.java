@@ -38,7 +38,7 @@ public class MinimumWindowSubstring {
       return "";
     }
     // initialize the min to compare to 
-    int min = 0;
+    int min = Integer.MAX_VALUE;
     // initialize indexes of min left/right, representing our answer
     int minLeft = 0, minRight = 0;
     // flag: found a substring which works. Tells us whether to return
