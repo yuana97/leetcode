@@ -1,0 +1,19 @@
+- In any system design question, our first step is the same.
+- Step 1: Outline Requirements
+- You want to identify the exact features and operational goals you have for your service.
+- For example:
+- Features:
+    - upload/download/view photos
+    - search photos, say based on titles
+    - users can follow other users
+    - generate a 'newsfeed' of popular photos from people the user follows
+- Operational Requirements:
+    - High availabiity (something you should always say)
+    - High reliability (never lose uploaded photos/videos)
+    - Low latency (say 200ms) for News Feed generation
+    - We can compromise on Consistency in favor or availability and low latency.
+
+- High level:
+    - Client -> Read API (view pics)
+             -> Write API
+             -> Search API
